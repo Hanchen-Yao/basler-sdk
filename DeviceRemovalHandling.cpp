@@ -1,12 +1,17 @@
 // DeviceRemovalHandling.cpp
+// DeviceRemovalHandling.cpp
 /*
     Note: Before getting started, Basler recommends reading the "Programmer's Guide" topic
     in the pylon C++ API documentation delivered with pylon.
     If you are upgrading to a higher major version of pylon, Basler also
     strongly recommends reading the "Migrating from Previous Versions" topic in the pylon C++ API documentation.
+    注意：在开始之前，Basler建议阅读pylon的软件的C++ API文档中的“程序员指南”。
+    如果你要升级到一个更高版本的pylon，Basler也强烈建议阅读pylon的C++ API文档中的“从以前版本迁移”。
 
     This sample program demonstrates how to be informed about the removal of a camera device.
     It also shows how to reconnect to a removed device.
+    这个示例程序演示如何获得有关删除相机设备的信息。
+    它还显示了如何重新连接到已删除的设备。
 
     Attention:
     If you build this sample in debug mode and run it using a GigE camera device, pylon will set the heartbeat 
@@ -14,6 +19,11 @@
     connection due to missing heartbeats. However, with this setting, it would take 5 minutes for the 
     application to notice that a GigE device has been disconnected. 
     As a workaround, the heartbeat timeout is set to 1000 ms.
+    注意：
+    如果在调试模式下构建此示例并使用GigE相机设备运行它，pylon会将heartbeat超时设置为5分钟。
+    这样做是为了允许调试和单步执行，而不会因为缺少heartbeats而丢失相机连接。
+    但是，使用此设置时，应用程序需要5分钟才能注意到GigE设备已断开连接。
+    作为解决方法，心跳超时设置为1000毫秒。
 */
 
 // Include files to use the pylon API.
