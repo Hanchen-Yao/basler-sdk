@@ -23,7 +23,7 @@
     如果在调试模式下构建此示例并使用GigE相机设备运行它，pylon会将heartbeat超时设置为5分钟。
     这样做是为了允许调试和单步执行，而不会因为缺少heartbeats而丢失相机连接。
     但是，使用此设置时，应用程序需要5分钟才能注意到GigE设备已断开连接。
-    作为解决方法，心跳超时设置为1000毫秒。
+    作为解决方法，heartbeats timeout设置为1000毫秒。
 */
 
 // Include files to use the pylon API.
