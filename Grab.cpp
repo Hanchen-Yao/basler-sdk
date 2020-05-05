@@ -9,6 +9,8 @@
     The images are grabbed and processed asynchronously, i.e.,
     while the application is processing a buffer, the acquisition of the next buffer is done
     in parallel.
+    这个示例演示了如何使用CInstantCamera类获取和处理图像。
+    图像是异步获取和处理的。在应用程序处理缓冲区的同时，将获取下一个缓冲区。
 
     The CInstantCamera class uses a pool of buffers to retrieve image data
     from the camera device. Once a buffer is filled and ready,
@@ -16,6 +18,10 @@
     and additional image data are collected in a grab result. The grab result is
     held by a smart pointer after retrieval. The buffer is automatically reused
     when explicitly released or when the smart pointer object is destroyed.
+    CInstantCamera类使用一个缓冲池来从摄像机设备检索图像数据。
+    一旦缓冲区被填满并准备就绪，就可以从相机对象中检索缓冲区进行处理。
+    在抓取结果中收集缓冲区和其他图像数据。抓取结果在检索后由智能指针持有。
+    当显式释放或销毁智能指针对象时，缓冲区将自动重用。
 */
 
 // Include files to use the pylon API.
