@@ -4,24 +4,22 @@
     in the pylon C++ API documentation delivered with pylon.
     If you are upgrading to a higher major version of pylon, Basler also
     strongly recommends reading the "Migrating from Previous Versions" topic in the pylon C++ API documentation.
-
     This sample illustrates how to grab and process images using the CInstantCamera class.
     The images are grabbed and processed asynchronously, i.e.,
     while the application is processing a buffer, the acquisition of the next buffer is done
     in parallel.
-    è¿™ä¸ªç¤ºä¾‹æ¼”ç¤ºäº†å¦‚ä½•ä½¿ç”¨CInstantCameraç±»è·å–å’Œå¤„ç†å›¾åƒã€‚
-    å›¾åƒæ˜¯å¼‚æ­¥è·å–å’Œå¤„ç†çš„ã€‚åœ¨åº”ç”¨ç¨‹åºå¤„ç†ç¼“å†²åŒºçš„åŒæ—¶ï¼Œå°†è·å–ä¸‹ä¸€ä¸ªç¼“å†²åŒºã€‚
-
+    Õâ¸öÊ¾ÀıÑİÊ¾ÁËÈçºÎÊ¹ÓÃCInstantCameraÀà»ñÈ¡ºÍ´¦ÀíÍ¼Ïñ¡£
+    Í¼ÏñÊÇÒì²½»ñÈ¡ºÍ´¦ÀíµÄ¡£ÔÚÓ¦ÓÃ³ÌĞò´¦Àí»º³åÇøµÄÍ¬Ê±£¬½«»ñÈ¡ÏÂÒ»¸ö»º³åÇø¡£
     The CInstantCamera class uses a pool of buffers to retrieve image data
     from the camera device. Once a buffer is filled and ready,
     the buffer can be retrieved from the camera object for processing. The buffer
     and additional image data are collected in a grab result. The grab result is
     held by a smart pointer after retrieval. The buffer is automatically reused
     when explicitly released or when the smart pointer object is destroyed.
-    CInstantCameraç±»ä½¿ç”¨ä¸€ä¸ªç¼“å†²æ± æ¥ä»æ‘„åƒæœºè®¾å¤‡æ£€ç´¢å›¾åƒæ•°æ®ã€‚
-    ä¸€æ—¦ç¼“å†²åŒºè¢«å¡«æ»¡å¹¶å‡†å¤‡å°±ç»ªï¼Œå°±å¯ä»¥ä»ç›¸æœºå¯¹è±¡ä¸­æ£€ç´¢ç¼“å†²åŒºè¿›è¡Œå¤„ç†ã€‚
-    åœ¨æŠ“å–ç»“æœä¸­æ”¶é›†ç¼“å†²åŒºå’Œå…¶ä»–å›¾åƒæ•°æ®ã€‚æŠ“å–ç»“æœåœ¨æ£€ç´¢åç”±æ™ºèƒ½æŒ‡é’ˆæŒæœ‰ã€‚
-    å½“æ˜¾å¼é‡Šæ”¾æˆ–é”€æ¯æ™ºèƒ½æŒ‡é’ˆå¯¹è±¡æ—¶ï¼Œç¼“å†²åŒºå°†è‡ªåŠ¨é‡ç”¨ã€‚
+    CInstantCameraÀàÊ¹ÓÃÒ»¸ö»º³å³ØÀ´´ÓÉãÏñ»úÉè±¸¼ìË÷Í¼ÏñÊı¾İ¡£
+    Ò»µ©»º³åÇø±»ÌîÂú²¢×¼±¸¾ÍĞ÷£¬¾Í¿ÉÒÔ´ÓÏà»ú¶ÔÏóÖĞ¼ìË÷»º³åÇø½øĞĞ´¦Àí¡£
+    ÔÚ×¥È¡½á¹ûÖĞÊÕ¼¯»º³åÇøºÍÆäËûÍ¼ÏñÊı¾İ¡£×¥È¡½á¹ûÔÚ¼ìË÷ºóÓÉÖÇÄÜÖ¸Õë³ÖÓĞ¡£
+    µ±ÏÔÊ½ÊÍ·Å»òÏú»ÙÖÇÄÜÖ¸Õë¶ÔÏóÊ±£¬»º³åÇø½«×Ô¶¯ÖØÓÃ¡£
 */
 
 // Include files to use the pylon API.
@@ -38,7 +36,7 @@ using namespace std;
 
 // Number of images to be grabbed.
 static const uint32_t c_countOfImagesToGrab = 100;
- 
+
 int main(int argc, char* argv[])
 {
     // The exit code of the sample application.
@@ -50,7 +48,7 @@ int main(int argc, char* argv[])
     try
     {
         // Create an instant camera object with the camera device found first.
-        CInstantCamera camera( CTlFactory::GetInstance().CreateFirstDevice());
+        CInstantCamera camera(CTlFactory::GetInstance().CreateFirstDevice());
 
         // Print the model name of the camera.
         cout << "Using device " << camera.GetDeviceInfo().GetModelName() << endl;
@@ -62,17 +60,17 @@ int main(int argc, char* argv[])
         // Start the grabbing of c_countOfImagesToGrab images.
         // The camera device is parameterized with a default configuration which
         // sets up free-running continuous acquisition.
-        camera.StartGrabbing( c_countOfImagesToGrab);
+        camera.StartGrabbing(c_countOfImagesToGrab);
 
         // This smart pointer will receive the grab result data.
         CGrabResultPtr ptrGrabResult;
 
         // Camera.StopGrabbing() is called automatically by the RetrieveResult() method
         // when c_countOfImagesToGrab images have been retrieved.
-        while ( camera.IsGrabbing())
+        while (camera.IsGrabbing())
         {
             // Wait for an image and then retrieve it. A timeout of 5000 ms is used.
-            camera.RetrieveResult( 5000, ptrGrabResult, TimeoutHandling_ThrowException);
+            camera.RetrieveResult(5000, ptrGrabResult, TimeoutHandling_ThrowException);
 
             // Image grabbed successfully?
             if (ptrGrabResult->GrabSucceeded())
@@ -80,8 +78,8 @@ int main(int argc, char* argv[])
                 // Access the image data.
                 cout << "SizeX: " << ptrGrabResult->GetWidth() << endl;
                 cout << "SizeY: " << ptrGrabResult->GetHeight() << endl;
-                const uint8_t *pImageBuffer = (uint8_t *) ptrGrabResult->GetBuffer();
-                cout << "Gray value of first pixel: " << (uint32_t) pImageBuffer[0] << endl << endl;
+                const uint8_t* pImageBuffer = (uint8_t*)ptrGrabResult->GetBuffer();
+                cout << "Gray value of first pixel: " << (uint32_t)pImageBuffer[0] << endl << endl;
 
 #ifdef PYLON_WIN_BUILD
                 // Display the grabbed image.
@@ -94,20 +92,20 @@ int main(int argc, char* argv[])
             }
         }
     }
-    catch (const GenericException &e)
+    catch (const GenericException& e)
     {
         // Error handling.
         cerr << "An exception occurred." << endl
-        << e.GetDescription() << endl;
+            << e.GetDescription() << endl;
         exitCode = 1;
     }
 
     // Comment the following two lines to disable waiting on exit.
     cerr << endl << "Press enter to exit." << endl;
-    while( cin.get() != '\n');
+    while (cin.get() != '\n');
 
     // Releases all pylon resources. 
-    PylonTerminate();  
+    PylonTerminate();
 
     return exitCode;
 }

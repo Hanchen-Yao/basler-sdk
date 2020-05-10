@@ -9,20 +9,12 @@
     exposure has finished, the camera can send an Exposure End event to the computer. The event
     can be received by the computer before the image data of the finished exposure has been transferred
     completely. This sample demonstrates how to be notified when camera event message data is received.
-    Basler USB3 Vision和GigE Vision摄像机可以发送事件消息。
-    例如，当传感器曝光完成时，摄像机可以向计算机发送曝光结束事件。
-    在完成曝光后的图像数据完全传输之前，计算机就可以接收到该事件。
-    这个示例演示了如何在接收到相机事件消息数据时得到通知。
 
     The event messages are automatically retrieved and processed by the InstantCamera classes.
     The information carried by event messages is exposed as parameter nodes in the camera node map
     and can be accessed like standard camera parameters. These nodes are updated
     when a camera event is received. You can register camera event handler objects that are
     triggered when event data has been received.
-    事件消息由InstantCamera类自动检索和处理。
-    事件消息携带的信息作为相机节点映射中的参数节点公开，可以像标准相机参数一样访问。
-    当接收到摄像机事件时，将更新这些节点。
-    可以注册在接收到事件数据时触发的相机事件处理程序对象。
 
     These mechanisms are demonstrated for the Exposure End and the Event Overrun events.
     The Exposure End event carries the following information:
@@ -32,24 +24,13 @@
     notification contains no specific information about how many or which events have been dropped.
     Events may be dropped if events are generated at a high frequency and if there isn't enough
     bandwidth available to send the events.
-    这些机制说明了曝光结束和超限事件。
-    曝光结束事件包含以下信息：
-    * ExposureEndEventFrameID：已曝光图像的数量。
-    * ExposureEndEventTimestamp：事件生成的时间。
-    * ExposureEndEventStreamChannelIndex:用于传输图像的图像数据流的数量。在Basler相机上，这个参数总是设置为0。
-    事件溢出事件（The Event Overrun event）由摄像机发送，作为事件正在被删除的警告。该通知不包含关于删除了多少事件或哪些事件的具体信息。
-    如果事件以较高的频率生成，并且没有足够的带宽发送事件，则可能会删除事件。
     
     Note: Different camera series implement different versions of the Standard Feature Naming Convention (SFNC).
     That's why the name and the type of the parameters used can be different.
-    注意:不同的相机系列实现不同版本的标准功能命名约定(Standard Feature Naming  Convention，SFNC)。
-    这就是为什么使用的参数的名称和类型可以不同。
     
     It is shown in this sample how to register event handlers indicating the arrival of events
     sent by the camera. For demonstration purposes, several different handlers are registered
     for the same event.
-    此示例中显示了如何注册事件处理程序以指示相机发送的事件的到达。
-    出于演示目的，为同一事件注册了几个不同的处理程序。
 */
 
 
@@ -286,3 +267,4 @@ int main(int argc, char* argv[])
 
     return exitCode;
 }
+

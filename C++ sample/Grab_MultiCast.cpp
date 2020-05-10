@@ -7,22 +7,15 @@
 
     This sample demonstrates how to open a camera in multicast mode
     and how to receive a multicast stream.
-    本示例仅适用于Basler GigE视觉摄像机，并演示了如何在多播模式下打开摄像机以及如何接收多播流（multicast stream）。
 
     Two instances of this application must be started simultaneously on different computers.
     The first application started on computer A acts as the controlling application and has full access to the GigE camera.
     The second instance started on computer B opens the camera in monitor mode.
     This instance is not able to control the camera but can receive multicast streams.
-    应用程序的两个实例必须在不同的计算机上同时运行。
-    在计算机A上启动的第一个应用程序作为控制应用程序，可以完全访问GigE摄像机。
-    在计算机B上启动的第二个实例以监视器模式打开摄像机。
-    此实例不能控制摄像机，但可以接收多播流。
 
     To get the sample running, start this application first on computer A in control mode.
     After computer A has begun to receive frames, start the second instance of this
     application on computer B in monitor mode.
-    要运行示例，请在计算机A上以控制模式启动应用程序。
-    在计算机A开始接收帧后，在监视模式下在计算机B上启动此应用程序的第二个实例。
 */
 
 // Include files to use the pylon API.
@@ -238,3 +231,4 @@ int main(int argc, char* argv[])
 
     return exitCode;
 }
+
