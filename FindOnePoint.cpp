@@ -1,3 +1,6 @@
+//搜索图片，找到第一个光点，输出坐标
+//时间：2020年5月27日
+//整理：hanchen
 #include <iostream>
 #include <fstream>
 #include <string>
